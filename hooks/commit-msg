@@ -16,7 +16,7 @@ type_map = {
     "fix": "🐛",
     "docs": "📝",
     "style": "🎨",
-    "refactor": "♻️",
+    "refactor": "♻️ ",
     "perf": "⚡️",
     "test": "🚨",
     "chore": "🔧",
@@ -87,7 +87,7 @@ with open(commit_message_path, "r") as commit_message_file:
     ########################################
     #     Add emoji to commit message      #
     ########################################
-    new_commit_messages = emoji_line(line_pieces, type_map[type]) + "\n".join(lines[1:])
+    new_commit_messages = emoji_line(line_pieces, type_map[type]) + "\n" + "\n".join([str(l.strip()) for l in lines[1::]])
 
 with open(commit_message_path, "w") as commit_message_file:
     commit_message_file.write(new_commit_messages)
